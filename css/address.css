@@ -1,0 +1,36 @@
+.title {
+    font-weight: bold;
+    display: block;
+  }
+
+  .hAddr {
+    position: absolute;
+
+    /* left: 10px;
+    top: 10px; */
+
+    bottom: 10px;
+    right: 10px;
+
+
+    border-radius: 2px;
+    background: rgb(188, 219, 162);
+    background: rgba(226, 255, 173, 0.8);
+    z-index: 1;
+    padding: 5px;
+  }
+
+  #centerAddr {
+    display: block;
+    margin-top: 2px;
+    font-weight: normal;
+  }
+
+  .bAddr {
+    padding: 7px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+ 
