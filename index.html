@@ -63,10 +63,6 @@
       지도에서 원하는 지점을 클릭하면 "주소정보"와 "좌표정보"를 보여줍니다!
     </h3>
     <br>
-    <h4>
-      [설정]
-      </h5>
-      장소 검색창 열기: <input type="checkbox" id="checkbox_searchWindow" onclick="checkSearchWindow()" checked>
 
 
   </div>
@@ -466,39 +462,29 @@
 
 
 
-    // <"장소 검색창 열기" 체크박스 설정 시 장소검색창 나타냄>
-    function checkSearchWindow() {
-      // Get the checkbox
-      var checkBox = document.getElementById("checkbox_searchWindow");
-      // Get the output text
-      var div_menu_wrap = document.getElementById("menu_wrap");
-
-      // If the checkbox is checked, display the output text
-      if (checkBox.checked == true) {
-        div_menu_wrap.style.display = "block";
-      } else {
-        div_menu_wrap.style.display = "none";
-      }
-    }
 
 
+    // 장소 검색창 보이기
     function openSearchWindow() {
-      // 장소 검색창 열기 체크박스 Check
-      document.getElementById("checkbox_searchWindow").checked = true;
-      checkSearchWindow()
 
       var div_open_search_btn = document.getElementById("open_search_btn");
       div_open_search_btn.style.display = "none";
 
+      var div_menu_wrap = document.getElementById("menu_wrap");
+      div_menu_wrap.style.display = "block";
+
+
     }
 
+    // 장소 검색창 숨기기
+
     function closeSearchWindow() {
-      // 장소 검색창 열기 체크박스  Uncheck
-      document.getElementById("checkbox_searchWindow").checked = false;
-      checkSearchWindow()
 
       var div_open_search_btn = document.getElementById("open_search_btn");
       div_open_search_btn.style.display = "block";
+
+      var div_menu_wrap = document.getElementById("menu_wrap");
+      div_menu_wrap.style.display = "none";
     }
 
 
