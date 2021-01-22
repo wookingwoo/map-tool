@@ -1,0 +1,36 @@
+ 
+ 
+  
+  #btn_userguide {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 58px;
+    height: 35px;
+    margin: 10px 0 30px 10px;
+    padding: 4px;
+    overflow-y: auto;
+    /* background: rgba(255, 255, 255, 0.7); */
+    z-index: 1;
+    /* font-size: 15px; */
+    /* border-radius: 10px; */
+  }
+
+
+ 
+ 
+ #btn_aboutme {
+    position: absolute;
+    left: 73px;
+    bottom: 0;
+    width: 85px;
+    height: 35px;
+    margin: 10px 0 30px 10px;
+    padding: 4px;
+    overflow-y: auto;
+    /* background: rgba(255, 255, 255, 0.7); */
+    z-index: 1;
+    /* font-size: 15px; */
+    /* border-radius: 10px; */
+  }
+

@@ -5,14 +5,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="naver-site-verification" content="bed27e88092722f9b019cfc796a1212fa148691d" />
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://maptool.wookingwoo.com">
+
+  <meta name="subject" content="도로명주소, 지번주소, 위도, 경도 좌표를 지도 위에서 알려드립니다.">
+  <meta name="keywords" content="지도, 좌표, 위도, 경도, 도로명주소, 지번주소, 주소, 도로명, 지도, 맵, 장소, 검색, 위치, GPS, 우킹우, wookingwoo, 우킹우닷컴, wookingwoo.com">
+  <meta name="author" content="wookingwoo">
+
+  <!-- 오픈 그래프 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="맵툴-우킹우닷컴">
+  <meta property="og:description" content="현재 좌표(위도, 경도)가 궁금하세요? 우킹우 맵툴은 도로명주소, 지번주소뿐만 아니라 좌표 정보(위도, 경도) 또한 제공합니다.">
+  <!-- <meta property="og:image" content="https://maptool.wookingwoo.com"> -->
+  <meta property="og:url" content="https://maptool.wookingwoo.com">
+
 
   <title>맵툴-우킹우닷컴</title>
+  <meta name="description" content="현재 좌표(위도, 경도)가 궁금하세요? 우킹우 맵툴은 도로명주소, 지번주소뿐만 아니라 좌표 정보(위도, 경도) 또한 제공합니다.">
 
   <link rel="stylesheet" href="css/map.css" />
   <link rel="stylesheet" href="css/search_window.css" />
   <link rel="stylesheet" href="css/address.css" />
   <link rel="stylesheet" href="css/footer.css" />
-
+  <link rel="stylesheet" href="css/info.css" />
 
 </head>
 
@@ -33,6 +48,18 @@
     <div id="open_search_btn">
       <button style="width: 100%; height: 100%" type="button" onclick="openSearchWindow()"> 검색창 열기 </button>
     </div>
+
+
+    <div id="btn_userguide">
+      <button style="width: 100%; height: 100%" type="button" onclick="openSearchWindow()"> 사용법 </button>
+    </div>
+
+
+
+    <div id="btn_aboutme">
+      <button style="width: 100%; height: 100%" type="button" onclick="openSearchWindow()"> 개발자 정보 </button>
+    </div>
+
 
 
 
@@ -61,76 +88,72 @@
     </div>
 
 
-    <h3>
-      지도에서 원하는 지점을 클릭하면 "주소정보"와 "좌표정보"를 보여줍니다!
-    </h3>
 
 
 
 
 
+    <!-- footer -->
+    <footer class="site-footer">
 
-  <!-- footer -->
-  <footer class="site-footer">
-
-    <hr>
+      <hr>
 
 
-    <div class="container">
+      <div class="container">
 
-      <div class="row">
-        <h6>About Me</h6>
+        <div class="row">
+          <h6>About Me</h6>
 
-        <div class="col-md-8 col-sm-6 col-xs-12">
-          <p class="copyright-text">Author: 
-       <a href="https://wookingwoo.com" target="_blank">wookingwoo.com</a>
-          </p>
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Author:
+              <a href="https://wookingwoo.com" target="_blank">wookingwoo.com</a>
+            </p>
 
-          <p class="copyright-text">Email: 
-            <a href="mailto:contact@wookingwoo.com">contact@wookingwoo.com</a>
-               </p>
+            <p class="copyright-text">Email:
+              <a href="mailto:contact@wookingwoo.com">contact@wookingwoo.com</a>
+            </p>
 
+
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
 
         </div>
-
-        <div class="col-md-4 col-sm-6 col-xs-12">
-          <ul class="social-icons">
-            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
-          </ul>
-        </div>
-
       </div>
-    </div>
 
 
 
 
 
-    <div class="quickLinks">
-      <div class="row">
-       
-        <div >
-          <h6>Quick Links</h6>
-          <ul class="footer-links">
-            <li><a href="https://wookingwoo.com/about_me" target="_blank">About Me</a></li>
-            <li><a href="https://wookingwoo.com/blog" target="_blank">Blog</a></li>
-            <li><a href="https://jjambot.wookingwoo.com" target="_blank">JJAMBOT</a></li>
-            <li><a href="https://smartwork.wookingwoo.com" target="_blank">SmartWork</a></li>
-            <li><a href="https://game.wookingwoo.com" target="_blank">wookingwoo-games</a></li>
-            <li><a href="https://github.com/wookingwoo" target="_blank">github</a></li>
+      <div class="quickLinks">
+        <div class="row">
 
-            <li><a href="#">Sitemap</a></li>
-          </ul>
+          <div>
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="https://wookingwoo.com/about_me" target="_blank">About Me</a></li>
+              <li><a href="https://wookingwoo.com/blog" target="_blank">Blog</a></li>
+              <li><a href="https://jjambot.wookingwoo.com" target="_blank">JJAMBOT</a></li>
+              <li><a href="https://smartwork.wookingwoo.com" target="_blank">SmartWork</a></li>
+              <li><a href="https://game.wookingwoo.com" target="_blank">wookingwoo-games</a></li>
+              <li><a href="https://github.com/wookingwoo" target="_blank">github</a></li>
+
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+
         </div>
 
       </div>
 
-    </div>
-
-</footer>
+    </footer>
 
 
 
@@ -184,7 +207,7 @@
           lon = position.coords.longitude; // 경도
 
         var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-          message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
+          message = '<div style="padding:5px;">현재 위치</div> <div style="padding:5px;">TIP: 지도에서 찾고자 하는 지점을 클릭하면<br>"주소 정보"와 "좌표 정보"를 보여줍니다!</div>'; // 인포윈도우에 표시될 내용입니다
 
         // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition, message);
@@ -194,7 +217,7 @@
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
       var locPosition = new kakao.maps.LatLng(37.566826, 126.9786567),
-        message = '위치정보를 찾을 수 없습니다.'
+        message = '<div style="padding:5px;">현재 위치정보를 찾을 수 없습니다. 브라우저의 위치허용 또는 스마트폰의 GPS를 켜주세요~</div>  <div style="padding:5px;">사용법: 지도에서 찾고자 하는 지점을 클릭하면<br>"주소 정보"와 "좌표 정보"를 보여줍니다!</div>';
 
       displayMarker(locPosition, message);
     }
