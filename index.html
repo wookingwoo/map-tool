@@ -31,15 +31,15 @@
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/info.css" />
   <link rel="stylesheet" href="css/modal.css" />
-  <link rel="stylesheet" href="css/custom_overlay.css" />
 
-  custon_overlay.css
+
 
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="javascript/modal.js"></script>
   <script type="text/javascript" src="javascript/copy_address.js"></script>
   <script type="text/javascript" src="javascript/search_coordinate.js"></script>
 
+  
 
 </head>
 
@@ -286,7 +286,7 @@
       });
 
       var iwContent = message, // 인포윈도우에 표시할 내용
-        iwRemoveable = true;
+        iwRemoveable = true;  // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
       // 인포윈도우를 생성합니다
       var infowindow = new kakao.maps.InfoWindow({
