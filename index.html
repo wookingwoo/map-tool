@@ -327,15 +327,19 @@
           detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
 
 
-var copyStr = '도로명주소 : ' + result[0].road_address.address_name ;
+          var copyStr = !!result[0].road_address ? '도로명주소 : ' + result[0].road_address.address_name : '';
+          copyStr += '지번 주소 : ' + result[0].address.address_name;
+          copyStr += '\\n';
+          copyStr += '위도 : ' + latlng.getLat() + '\\n' + '경도 : ' + latlng.getLng();
+          copyStr += '\\n우킹우 맵툴에서 조회한 주소입니다.(https://maptool.wookingwoo.com)';
 
 
 
 
 
-          var content = 
-          
-          '<div class="bAddr">' +
+          var content =
+
+            '<div class="bAddr">' +
             '<span class="title">주소정보</span>' +
             detailAddr +
             '</div>' +
@@ -344,18 +348,18 @@ var copyStr = '도로명주소 : ' + result[0].road_address.address_name ;
             '<span class="title">좌표정보</span>' +
             latlng_Addr +
             '</div>' +
-            
-            
-'<button onclick=\"copyToClipboard(\''+copyStr+'\')\">복사</button>'+
-'<span id="success_msg"></span>' + //성공여부 메시지 출력
+
+
+            '<button onclick=\"copyToClipboard(\'' + copyStr + '\')\">복사</button>' +
+            '<span id="success_msg"></span>' + //성공여부 메시지 출력
 
 
 
 
 
 
-          // 마커를 클릭한 위치에 표시합니다
-          marker.setPosition(mouseEvent.latLng);
+            // 마커를 클릭한 위치에 표시합니다
+            marker.setPosition(mouseEvent.latLng);
           marker.setMap(map);
 
 
