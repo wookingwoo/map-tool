@@ -31,16 +31,20 @@
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/info.css" />
   <link rel="stylesheet" href="css/modal.css" />
+  <link rel="stylesheet" href="css/custom_overlay.css" />
 
+  custon_overlay.css
 
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="javascript/modal.js"></script>
   <script type="text/javascript" src="javascript/copy_address.js"></script>
+  <script type="text/javascript" src="javascript/search_coordinate.js"></script>
 
 
 </head>
 
 <body>
+
 
 
   <div class="map_wrap">
@@ -167,19 +171,36 @@
 
     <!-- 키워드로 장소검색하고 목록으로 표출하기 -->
     <div id="menu_wrap" class="bg_white">
-
       <div style="width: 100%">
         <button style="width: 100%" type="button" onclick="closeSearchWindow()"> 검색창 닫기 X </button>
-
       </div>
 
       <hr>
 
       <div class="option">
         <div>
+          <h3>좌표로 검색</h3>
+          <form onsubmit="panToCoordinate(); return false;">
+
+            위도: <input style="width: 25%;" type="text" id="input_latitude"></input>
+            경도: <input style="width: 25%;" type="text" id="input_longitude"></input>
+
+            <button type="submit">이동</button>
+
+          </form>
+
+        </div>
+      </div>
+
+      <hr>
+
+
+      <div class="option">
+        <div>
+          <h3>주소로 검색</h3>
           <form onsubmit="searchPlaces(); return false;">
-            장소 검색 : <input type="text" value="이곳에 장소 입력" id="keyword" size="15">
-            <button type="submit">검색하기</button>
+            주소: <input style="width: 60%;" type="text" value="이곳에 장소 입력" id="keyword">
+            <button type="submit">검색</button>
           </form>
         </div>
       </div>
@@ -311,8 +332,7 @@
           var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
           detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
 
-          var copyStr = !!result[0].road_address ? '도로명주소 : ' + result[0].road_address.address_name : '';
-          copyStr += '\\n';
+          var copyStr = !!result[0].road_address ? '도로명주소 : ' + result[0].road_address.address_name + '\\n' : '';
           copyStr += '지번 주소 : ' + result[0].address.address_name;
           copyStr += '\\n';
           copyStr += '위도 : ' + latlng.getLat() + '\\n' + '경도 : ' + latlng.getLng();
@@ -329,7 +349,7 @@
             '<span class="title">좌표정보</span>' +
             latlng_Addr +
             '</div>' +
-            '<button style="float:right; margin-right: 5px;" onclick=\"copyToClipboard(\'' + copyStr + '\')\">복사</button>'+
+            '<button style="float:right; margin-right: 5px;" onclick=\"copyToClipboard(\'' + copyStr + '\')\">주소 복사</button>'+
             '<span id="copy_result_msg" style="color:DodgerBlue; float:right; margin-right: 5px;"></span>'; //성공여부 메시지 출력
 
 
