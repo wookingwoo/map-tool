@@ -30,9 +30,10 @@
   <link rel="stylesheet" href="css/address.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/info.css" />
-
-
   <link rel="stylesheet" href="modal/modal.css" />
+
+
+  <script type="text/javascript" src="javascript/copy_address.js"></script>
 
 
 
@@ -89,7 +90,7 @@
             <h2>사용 방법</h2>
             <p>지도에서 찾고자 하는 지점을 클릭하면 "주소 정보"와 "좌표 정보"를 보여줍니다!</p>
             <br>
-            <p>현재 위치 표시방법: 브라우저의 경우 위치접근 허용, 스마트폰의 경우 GPS 설정</p>
+            <p>현재 위치 표시방법: 브라우저의 경우 위치접근 허용, 스마트폰의 경우 GPS 설정 (새로고침 필요)</p>
             <br>
             <p>장소 검색 방법: 좌측 상단의 "검색창 열기"를 눌러 장소 검색을 할 수 있습니다.</p>
 
@@ -102,7 +103,7 @@
 
             <div>
               <p class="copyright-text">Author:
-                <a href="https://wookingwoo.com" target="_blank">wookingwoo.com</a>
+                <a href="https://wookingwoo.com" target="_blank">wookingwoo</a>
               </p>
 
               <p class="copyright-text">Email:
@@ -318,12 +319,23 @@
       var latlng_Addr = '<div> 위도 : ' + latlng.getLat() + '</div>' + '<div>경도 : ' + latlng.getLng() + '</div>';
 
 
+
+
       searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
         if (status === kakao.maps.services.Status.OK) {
           var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
           detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
 
-          var content = '<div class="bAddr">' +
+
+var copyStr = '도로명주소 : ' + result[0].road_address.address_name ;
+
+
+
+
+
+          var content = 
+          
+          '<div class="bAddr">' +
             '<span class="title">주소정보</span>' +
             detailAddr +
             '</div>' +
@@ -331,7 +343,15 @@
             '<div class="bAddr">' +
             '<span class="title">좌표정보</span>' +
             latlng_Addr +
-            '</div>';
+            '</div>' +
+            
+            
+'<button onclick=\"copyToClipboard(\''+copyStr+'\')\">복사</button>'+
+'<span id="success_msg"></span>' + //성공여부 메시지 출력
+
+
+
+
 
 
           // 마커를 클릭한 위치에 표시합니다
