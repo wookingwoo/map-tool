@@ -31,6 +31,16 @@ function panToCoordinate() {
             .getElementById('input_longitude')
             .value;
 
+        if (!input_latitude.replace(/^\s+|\s+$/g, '')) {
+            alert('위도값을 입력해주세요!');
+            return false;
+        }
+
+        if (!input_longitude.replace(/^\s+|\s+$/g, '')) {
+            alert('경도값을 입력해주세요!');
+            return false;
+        }
+
         // 이동할 위도 경도 위치를 생성합니다
         var moveLatLon = new kakao
             .maps
@@ -57,8 +67,13 @@ function panToCoordinate() {
                 removable: iwRemoveable
             });
 
+        alert(
+            "[알림]\n올바르지 않은 좌표 정보를 입력한 경우 지도가 정상적으로 표시되지 않습니다. 이 경우 새로 고침하여 다시 검색해 주세요~ \n 국" +
+            "내 좌표만 검색이 가능합니다."
+        );
+
     } catch (e) {
-        alert("입력하신 좌표를 찾을 수 없습니다.\n정확한 좌표를 입력해주세요~\n국내 좌표만 검색이 가능합니다.");
+        alert("입력하신 좌표를 찾을 수 없습니다.\n 정확한 좌표를 입력해 주세요~\n 국내 좌표만 검색이 가능합니다.");
     }
 
 }

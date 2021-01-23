@@ -181,9 +181,8 @@
         <div>
           <h3>좌표로 검색</h3>
           <form onsubmit="panToCoordinate(); return false;">
-
-            위도: <input style="width: 25%;" type="text" id="input_latitude"></input>
-            경도: <input style="width: 25%;" type="text" id="input_longitude"></input>
+            위도: <input style="width: 25%;" type="number" placeholder="37.5668" step="any" min="20" max="50" id="input_latitude"></input>
+            경도: <input style="width: 25%;" type="number" placeholder="126.97866" step="any" min="110" max="140" id="input_longitude"></input>
 
             <button type="submit">이동</button>
 
@@ -199,7 +198,7 @@
         <div>
           <h3>주소로 검색</h3>
           <form onsubmit="searchPlaces(); return false;">
-            주소: <input style="width: 60%;" type="text" value="이곳에 장소 입력" id="keyword">
+            주소: <input style="width: 60%;" type="text" placeholder="서울 시청" value="이곳에 장소 입력" id="keyword">
             <button type="submit">검색</button>
           </form>
         </div>
