@@ -123,7 +123,7 @@ div.row {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
     .row > .col.col-md-1 {
         width: 8.3333%;
     }
@@ -224,7 +224,7 @@ div.row {
 }
 
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 1199px) {
     .hidden-on-md {
         /*display: none;*/
         background-color: blue !important;
@@ -233,7 +233,7 @@ div.row {
 
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
     .hidden-below-sm {
         display: none;
         /*background-color: #00f592 !important;*/ /* 테스트용 코드 */
@@ -248,7 +248,7 @@ div.row {
 }
 
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 1199px) {
     .shown-on-md {
         display: block;
         /*background-color: #8211ce !important;*/ /* 테스트용 코드 */
