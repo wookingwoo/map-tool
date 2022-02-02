@@ -12,8 +12,8 @@ df_school_all = pd.read_csv('./back_data/2021.12.31/학교기본정보_위치정
 seoul_cityhall = [37.5666805, 126.9784147]
 gwangju_cityhall = [35.16015532628239, 126.85146388158552]
 
-m = folium.Map(location=seoul_cityhall, tiles='openstreetmap', zoom_start=13)
-# m = folium.Map(location=gwangju_cityhall, tiles='openstreetmap', zoom_start=13)
+# m = folium.Map(location=seoul_cityhall, tiles='openstreetmap', zoom_start=13)
+m = folium.Map(location=gwangju_cityhall, tiles='openstreetmap', zoom_start=13)
 
 group_all_school = folium.FeatureGroup(name='초중고 전체', overlay=True, show=True)
 group_elementary_school = folium.FeatureGroup(name='초등학교', overlay=True, show=False)
