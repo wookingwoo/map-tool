@@ -125,7 +125,7 @@ for _, row in tqdm(df_high_school.iterrows()):
 group_high_school.add_child(mc_high_school)
 group_all_school.add_child(mc_all_school)
 
-title1 = '[우킹우 맵툴] 전국 초중고교 지도'
+title1 = '<a href="/" target="_blank">[우킹우 맵툴] </a> 전국 초중고교 지도'
 title_html1 = '''
              <h3 align="center" ><b>{}</b></h3>
              '''.format(title1)
