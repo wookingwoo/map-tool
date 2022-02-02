@@ -7,8 +7,7 @@ from folium.plugins import MarkerCluster
 from folium.features import DivIcon
 from tqdm import tqdm
 
-df_school_all = pd.read_csv('./back_data/2021.12.31/1.csv')
-# , encoding='CP949'
+df_school_all = pd.read_csv('./back_data/2021.12.31/학교기본정보_위치정보포함.csv', encoding='CP949')
 
 seoul_cityhall = [37.5666805, 126.9784147]
 gwangju_cityhall = [35.16015532628239, 126.85146388158552]
@@ -16,7 +15,7 @@ gwangju_cityhall = [35.16015532628239, 126.85146388158552]
 m = folium.Map(location=seoul_cityhall, tiles='openstreetmap', zoom_start=13)
 # m = folium.Map(location=gwangju_cityhall, tiles='openstreetmap', zoom_start=13)
 
-group_all_school = folium.FeatureGroup(name='전체 초중고', overlay=True, show=True)
+group_all_school = folium.FeatureGroup(name='초중고 전체', overlay=True, show=True)
 group_elementary_school = folium.FeatureGroup(name='초등학교', overlay=True, show=False)
 group_middle_school = folium.FeatureGroup(name='중학교', overlay=True, show=False)
 group_high_school = folium.FeatureGroup(name='고등학교', overlay=True, show=False)
@@ -59,11 +58,12 @@ mc_all_school = MarkerCluster()
 # 초등학교 MarkerCluster
 mc_elementary_school = MarkerCluster()
 for _, row in tqdm(df_elementary_school.iterrows()):
+    eng_school_name = str(row['영문학교명']).replace('`', '\`')
     mc_elementary_school.add_child(
         Marker(location=[row['Latitude'], row['Longitude']],
                icon=folium.Icon(icon='home', color='blue'),
                popup=folium.Popup(
-                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {row['영문학교명']} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
+                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {eng_school_name} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
                    max_width=300), )
     )
 
@@ -71,7 +71,7 @@ for _, row in tqdm(df_elementary_school.iterrows()):
         Marker(location=[row['Latitude'], row['Longitude']],
                icon=folium.Icon(icon='home', color='blue'),
                popup=folium.Popup(
-                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {row['영문학교명']} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
+                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {eng_school_name} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
                    max_width=300), )
     )
 
@@ -81,11 +81,12 @@ group_all_school.add_child(mc_all_school)
 # 중학교 MarkerCluster
 mc_middle_school = MarkerCluster()
 for _, row in tqdm(df_middle_school.iterrows()):
+    eng_school_name = str(row['영문학교명']).replace('`', '\`')
     mc_middle_school.add_child(
         Marker(location=[row['Latitude'], row['Longitude']],
                icon=folium.Icon(icon='home', color='green'),
                popup=folium.Popup(
-                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {row['영문학교명']} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
+                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {eng_school_name} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
                    max_width=300), )
     )
 
@@ -93,7 +94,7 @@ for _, row in tqdm(df_middle_school.iterrows()):
         Marker(location=[row['Latitude'], row['Longitude']],
                icon=folium.Icon(icon='home', color='green'),
                popup=folium.Popup(
-                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {row['영문학교명']} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
+                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {eng_school_name} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
                    max_width=300), )
     )
 
@@ -103,11 +104,12 @@ group_all_school.add_child(mc_all_school)
 # 고등학교 MarkerCluster
 mc_high_school = MarkerCluster()
 for _, row in tqdm(df_high_school.iterrows()):
+    eng_school_name = str(row['영문학교명']).replace('`', '\`')
     mc_high_school.add_child(
         Marker(location=[row['Latitude'], row['Longitude']],
                icon=folium.Icon(icon='home', color='orange'),
                popup=folium.Popup(
-                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {row['영문학교명']} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
+                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {eng_school_name} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
                    max_width=300),
                )
     )
@@ -116,7 +118,7 @@ for _, row in tqdm(df_high_school.iterrows()):
         Marker(location=[row['Latitude'], row['Longitude']],
                icon=folium.Icon(icon='home', color='orange'),
                popup=folium.Popup(
-                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {row['영문학교명']} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
+                   f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div> {eng_school_name} <br>표준학교코드: {row['표준학교코드']} <br>도로명주소: {row['도로명주소'] + row['도로명상세주소']} <br>관할조직명: {row['관할조직명']} <br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']} <br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']} <br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
                    max_width=300), )
     )
 
@@ -133,4 +135,3 @@ title_html = title_html1
 m.get_root().html.add_child(folium.Element(title_html))
 
 m.save('index.html')
-m
