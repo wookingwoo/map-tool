@@ -35,7 +35,7 @@ group_high_school.add_to(m)
 folium.LayerControl().add_to(m)
 
 Marker(location=seoul_cityhall,
-       popup=folium.Popup("서울 시청", max_width=300),
+       popup=folium.Popup("서울 시청", max_width=300, show=True),
        icon=folium.Icon(color='red', icon='star'),
        tooltip="서울 시청",
        ).add_to(m)
