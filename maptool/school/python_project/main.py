@@ -35,13 +35,15 @@ group_high_school.add_to(m)
 folium.LayerControl().add_to(m)
 
 Marker(location=seoul_cityhall,
-       popup=folium.Popup("서울시청", max_width=300),
-       icon=folium.Icon(color='red', icon='star')
+       popup=folium.Popup("서울 시청", max_width=300),
+       icon=folium.Icon(color='red', icon='star'),
+       tooltip="서울 시청",
        ).add_to(m)
 
 Marker(location=gwangju_cityhall,
-       popup=folium.Popup("광주시청", max_width=300),
-       icon=folium.Icon(color='red', icon='star')
+       popup=folium.Popup("광주 시청", max_width=300, show=True),
+       icon=folium.Icon(color='red', icon='star'),
+       tooltip="광주 시청",
        ).add_to(m)
 
 df_school_all = df_school_all.dropna(subset=['Latitude_FullAdd'])
@@ -80,7 +82,10 @@ for _, row in tqdm(df_elementary_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
+                   max_width=300),
+               tooltip=row['학교명']
+               ),
+
     )
 
     mc_all_school.add_child(
@@ -94,8 +99,9 @@ for _, row in tqdm(df_elementary_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
 group_elementary_school.add_child(mc_elementary_school)
 group_all_school.add_child(mc_all_school)
@@ -114,8 +120,9 @@ for _, row in tqdm(df_middle_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
     mc_all_school.add_child(
         Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
@@ -128,8 +135,9 @@ for _, row in tqdm(df_middle_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
 group_middle_school.add_child(mc_middle_school)
 group_all_school.add_child(mc_all_school)
@@ -148,8 +156,9 @@ for _, row in tqdm(df_high_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
     mc_all_school.add_child(
         Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
@@ -162,8 +171,9 @@ for _, row in tqdm(df_high_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
 group_high_school.add_child(mc_high_school)
 group_all_school.add_child(mc_all_school)
