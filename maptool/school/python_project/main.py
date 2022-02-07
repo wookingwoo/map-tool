@@ -39,8 +39,13 @@ Marker(location=seoul_cityhall,
        icon=folium.Icon(color='red', icon='star')
        ).add_to(m)
 
-df_school_all = df_school_all.dropna(subset=['Latitude'])
-df_school_all = df_school_all.dropna(subset=['Longitude'])
+Marker(location=gwangju_cityhall,
+       popup=folium.Popup("광주시청", max_width=300),
+       icon=folium.Icon(color='red', icon='star')
+       ).add_to(m)
+
+df_school_all = df_school_all.dropna(subset=['Latitude_FullAdd'])
+df_school_all = df_school_all.dropna(subset=['Longitude_FullAdd'])
 
 # 초등학교 DataFrame
 mask_elementary_school = df_school_all['학교종류명'] == '초등학교'
@@ -65,7 +70,7 @@ mc_all_school = MarkerCluster()
 mc_elementary_school = MarkerCluster()
 for _, row in tqdm(df_elementary_school.iterrows()):
     mc_elementary_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='blue'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -79,7 +84,7 @@ for _, row in tqdm(df_elementary_school.iterrows()):
     )
 
     mc_all_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='blue'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -99,7 +104,7 @@ group_all_school.add_child(mc_all_school)
 mc_middle_school = MarkerCluster()
 for _, row in tqdm(df_middle_school.iterrows()):
     mc_middle_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='green'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -113,7 +118,7 @@ for _, row in tqdm(df_middle_school.iterrows()):
     )
 
     mc_all_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='green'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -133,7 +138,7 @@ group_all_school.add_child(mc_all_school)
 mc_high_school = MarkerCluster()
 for _, row in tqdm(df_high_school.iterrows()):
     mc_high_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='orange'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -147,7 +152,7 @@ for _, row in tqdm(df_high_school.iterrows()):
     )
 
     mc_all_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='orange'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
