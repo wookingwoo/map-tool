@@ -35,12 +35,19 @@ group_high_school.add_to(m)
 folium.LayerControl().add_to(m)
 
 Marker(location=seoul_cityhall,
-       popup=folium.Popup("서울시청", max_width=300),
-       icon=folium.Icon(color='red', icon='star')
+       popup=folium.Popup("서울 시청", max_width=300),
+       icon=folium.Icon(color='red', icon='star'),
+       tooltip="서울 시청",
        ).add_to(m)
 
-df_school_all = df_school_all.dropna(subset=['Latitude'])
-df_school_all = df_school_all.dropna(subset=['Longitude'])
+Marker(location=gwangju_cityhall,
+       popup=folium.Popup("광주 시청", max_width=300, show=True),
+       icon=folium.Icon(color='red', icon='star'),
+       tooltip="광주 시청",
+       ).add_to(m)
+
+df_school_all = df_school_all.dropna(subset=['Latitude_FullAdd'])
+df_school_all = df_school_all.dropna(subset=['Longitude_FullAdd'])
 
 # 초등학교 DataFrame
 mask_elementary_school = df_school_all['학교종류명'] == '초등학교'
@@ -65,7 +72,7 @@ mc_all_school = MarkerCluster()
 mc_elementary_school = MarkerCluster()
 for _, row in tqdm(df_elementary_school.iterrows()):
     mc_elementary_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='blue'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -75,11 +82,14 @@ for _, row in tqdm(df_elementary_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
+                   max_width=300),
+               tooltip=row['학교명']
+               ),
+
     )
 
     mc_all_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='blue'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -89,8 +99,9 @@ for _, row in tqdm(df_elementary_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
 group_elementary_school.add_child(mc_elementary_school)
 group_all_school.add_child(mc_all_school)
@@ -99,7 +110,7 @@ group_all_school.add_child(mc_all_school)
 mc_middle_school = MarkerCluster()
 for _, row in tqdm(df_middle_school.iterrows()):
     mc_middle_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='green'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -109,11 +120,12 @@ for _, row in tqdm(df_middle_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
     mc_all_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='green'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -123,8 +135,9 @@ for _, row in tqdm(df_middle_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
 group_middle_school.add_child(mc_middle_school)
 group_all_school.add_child(mc_all_school)
@@ -133,7 +146,7 @@ group_all_school.add_child(mc_all_school)
 mc_high_school = MarkerCluster()
 for _, row in tqdm(df_high_school.iterrows()):
     mc_high_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='orange'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -143,11 +156,12 @@ for _, row in tqdm(df_high_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
     mc_all_school.add_child(
-        Marker(location=[row['Latitude'], row['Longitude']],
+        Marker(location=[row['Latitude_FullAdd'], row['Longitude_FullAdd']],
                icon=folium.Icon(icon='home', color='orange'),
                popup=folium.Popup(
                    f"<div style = font-size:1.5em; margin-bottom: 1px;> <strong>[{row['학교명']}]</strong> </div>" \
@@ -157,8 +171,9 @@ for _, row in tqdm(df_high_school.iterrows()):
                    f"<br>학교구분: {row['고등학교일반실업구분명']}, {row['설립명']}, {row['남녀공학구분명']}, {row['입시전후기구분명']}" \
                    f"<br>전화번호: {row['전화번호']} <br>팩스번호: {row['팩스번호']}" \
                    f"<br>홈페이지주소: {row['홈페이지주소']} <br>설립일자/개교기념일: {row['설립일자']}/{row['개교기념일']}<br>정보수정일: {row['수정일']}",
-                   max_width=300), )
-    )
+                   max_width=300),
+               tooltip=row['학교명']
+               ), )
 
 group_high_school.add_child(mc_high_school)
 group_all_school.add_child(mc_all_school)
